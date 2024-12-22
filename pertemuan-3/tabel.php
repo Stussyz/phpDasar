@@ -31,8 +31,8 @@
     echo "<td>$i,$j</td>";
     }
     echo "</tr>";
-}
-   ?>
+    }
+    ?>
 
 </table>
 </body>
