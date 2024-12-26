@@ -16,16 +16,29 @@
             transition: 1s;
         }
         .kotak:hover {
-            transform: rotate(180deg);
+            transform: rotate(360deg);
             border-radius: 50%;
+        }
+        .clear {
+            clear:both;
         }
     </style>
 </head>
 <body>
     <?php
     // mencetak isi array multi-dimensi
-    $angka= [[1,2,3],[4,5,6],[7,8,9]];
-    echo $angka [2] [2];
+    $angka= [
+        [1,2,3],
+        [4,5,6],
+        [7,8,9]
+    ];
     ?>
+<?php foreach ( $angka as $a ) : ?>
+    <?php foreach ( $a as $a2 ) : ?>
+        <div class="kotak"><?= $a2; ?></div>
+    <?php endforeach; ?>
+        <!-- untuk membersihkan float -->
+        <div class="clear"></div>
+<?php endforeach; ?>
 </body>
 </html>
