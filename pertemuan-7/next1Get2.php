@@ -1,6 +1,17 @@
 <?php
-// data mahasiswa dengan array multi dimensi
-// meng-asosiasikan array numerik menjadi associative array 
+// SUPERGLOBALS VARIABLE :
+// variable global milik PHP
+// merupakan Array Associative
+
+// contoh 1: menggunakan key dan value pada variable superglobals
+// $_GET ["nama"] = "Mohammad Fadhol";
+// $_GET ["nrp"] = "60262300004";
+// var_dump($_GET);
+
+// contoh 2: menggunakan variable superglobals dengan input key & value pada kolom search bar (browser)
+// var_dump($_GET);
+
+// contoh 3: kombinasi dengan metode "foreach"
 $mahasiswa = [
     [
         "Nama" => "Sandhika Galih", 
@@ -28,31 +39,28 @@ $mahasiswa = [
         "Gambar" => "superman.jpg"
     ]
 ];
-// pemanggilan array numerik + string + array didalam sub-array:
-// echo $mahasiswa[0]["Nilai"][2];
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahasiswa</title>
+    <title>GET</title>
 </head>
 <body>
     <h1>Daftar Mahasiswa</h1>
-    <!-- pemanggilan data mhs dengan array associative (index "string") -->
-    <!-- menambahkan gambar 100x100 pada list dengan pemanggian array associative (index "string") -->
-    <?php foreach ($mahasiswa as $m) : ?>
-            <ul>
+    <ul>
+        <?php foreach ( $mahasiswa as $mhs) : ?>
+            <!-- Mengirimkan data detail mahasiswa menggunakan request GET melalui inputan data url -->
             <li>
-                <img src="img/<?= $m["Gambar"]; ?>">
+                <a href="next2Get2.php?Nama=<?= $mhs["Nama"]; ?>
+                    &NRP=<?= $mhs["NRP"]; ?>
+                    &Universitas=<?= $mhs["Universitas"]; ?>
+                    &Gambar=<?= $mhs["Gambar"]; ?>">
+                    <?= $mhs["Nama"]?>
+                </a>
             </li>
-            <li><?= $m ["Nama"]; ?></li>
-            <li><?= $m ["NRP"]; ?></li>
-            <li><?= $m ["Jurusan"]; ?></li>
-            <li><?= $m ["Universitas"]; ?></li>
-            <li><?= $m ["Email"]; ?></li>
-            </ul>
-        <?php endforeach ?>
+        <?php endforeach; ?>
+    </ul>
 </body>
 </html>
